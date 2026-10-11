@@ -1,0 +1,52 @@
+# Template for backend/src/main/resources/application.properties (that file is gitignored
+# because it holds real credentials). Copy this file to application.properties and fill
+# in your own values before starting the backend.
+
+# ===============================
+# DATABASE CONFIGURATION (PostgreSQL)
+# ===============================
+# Started with: docker compose up -d
+spring.datasource.url=jdbc:postgresql://localhost:5433/postgres
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.jpa.hibernate.ddl-auto=update
+
+# ===============================
+# GEMINI AI (VIA OPENAI COMPATIBILITY)
+# ===============================
+spring.ai.openai.api-key=YOUR_GEMINI_API_KEY
+spring.ai.openai.base-url=https://generativelanguage.googleapis.com/v1beta/openai
+spring.ai.openai.chat.model=gemini-2.5-flash
+spring.ai.openai.embedding.model=text-embedding-004
+spring.ai.vectorstore.pgvector.initialize-schema=true
+
+# ===============================
+# GITHUB OAUTH2 CONFIGURATION
+# ===============================
+spring.security.oauth2.client.registration.github.client-id=YOUR_GITHUB_OAUTH_CLIENT_ID
+spring.security.oauth2.client.registration.github.client-secret=YOUR_GITHUB_OAUTH_CLIENT_SECRET
+spring.security.oauth2.client.registration.github.scope[0]=read:user
+spring.security.oauth2.client.registration.github.scope[1]=repo
+
+# ===============================
+# CRYPTO & ENCRYPTION SETTINGS
+# ===============================
+app.token-encryptor-password=change-me
+app.token-encryptor-salt=change-me-16ch
+
+# ===============================
+# INDEXING SETTINGS
+# ===============================
+app.indexing.chunk-size=800
+app.indexing.max-file-bytes=524288
+
+# ===============================
+# APP SETTINGS
+# ===============================
+# NOTE: the key is app.frontend-url (hyphen), not app.frontend.url
+app.frontend-url=http://localhost:3000
+
+# ===============================
+# CORS SETTINGS
+# ===============================
+app.cors.allowed-origins=http://localhost:3000
